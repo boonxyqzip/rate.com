@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티어메이커 - Tier Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 티어메이커</h1>
+            <p>아이템을 드래그하여 티어에 배치하세요!</p>
+        </header>
+
+        <div class="controls">
+            <div class="add-item-section">
+                <input type="text" id="itemName" placeholder="아이템 이름 입력" />
+                <input type="file" id="itemImage" accept="image/*" />
+                <button id="addItemBtn">아이템 추가</button>
+            </div>
+            <div class="action-buttons">
+                <button id="clearAllBtn" class="btn-danger">전체 초기화</button>
+                <button id="saveBtn">저장</button>
+                <button id="loadBtn">불러오기</button>
+            </div>
+        </div>
+
+        <div class="tier-container">
+            <div class="tier-row" data-tier="S">
+                <div class="tier-label">S</div>
+                <div class="tier-items" data-tier="S"></div>
+            </div>
+            <div class="tier-row" data-tier="A">
+                <div class="tier-label">A</div>
+                <div class="tier-items" data-tier="A"></div>
+            </div>
+            <div class="tier-row" data-tier="B">
+                <div class="tier-label">B</div>
+                <div class="tier-items" data-tier="B"></div>
+            </div>
+            <div class="tier-row" data-tier="C">
+                <div class="tier-label">C</div>
+                <div class="tier-items" data-tier="C"></div>
+            </div>
+            <div class="tier-row" data-tier="D">
+                <div class="tier-label">D</div>
+                <div class="tier-items" data-tier="D"></div>
+            </div>
+            <div class="tier-row" data-tier="F">
+                <div class="tier-label">F</div>
+                <div class="tier-items" data-tier="F"></div>
+            </div>
+        </div>
+
+        <div class="unranked-section">
+            <h2>미분류 아이템</h2>
+            <div class="unranked-items" id="unrankedItems"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

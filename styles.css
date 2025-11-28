@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #667eea;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.add-item-section {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#itemName {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    flex: 1;
+    min-width: 200px;
+    transition: border-color 0.3s;
+}
+
+#itemName:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#itemImage {
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+#itemImage:hover {
+    border-color: #667eea;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#addItemBtn {
+    background: #667eea;
+    color: white;
+}
+
+#addItemBtn:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-buttons button {
+    background: #6c757d;
+    color: white;
+}
+
+.action-buttons button:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #dc3545 !important;
+}
+
+.btn-danger:hover {
+    background: #c82333 !important;
+}
+
+.tier-container {
+    margin-bottom: 40px;
+}
+
+.tier-row {
+    display: flex;
+    margin-bottom: 10px;
+    min-height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tier-label {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.tier-row[data-tier="S"] .tier-label {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.tier-row[data-tier="A"] .tier-label {
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+}
+
+.tier-row[data-tier="B"] .tier-label {
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+}
+
+.tier-row[data-tier="C"] .tier-label {
+    background: linear-gradient(135deg, #90ee90, #7cfc00);
+}
+
+.tier-row[data-tier="D"] .tier-label {
+    background: linear-gradient(135deg, #87ceeb, #4682b4);
+}
+
+.tier-row[data-tier="F"] .tier-label {
+    background: linear-gradient(135deg, #d3d3d3, #a9a9a9);
+}
+
+.tier-items {
+    flex: 1;
+    background: #f8f9fa;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    min-height: 120px;
+}
+
+.item {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+.item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.item img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.item .item-name {
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item:hover .delete-btn {
+    opacity: 1;
+}
+
+.item .delete-btn:hover {
+    background: #dc3545;
+    transform: scale(1.1);
+}
+
+.unranked-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.unranked-section h2 {
+    margin-bottom: 15px;
+    color: #667eea;
+}
+
+.unranked-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 120px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+.tier-items.drag-over {
+    background: #e3f2fd;
+    border: 2px dashed #667eea;
+}
+
+.unranked-items.drag-over {
+    background: #e3f2fd;
+    border: 2px dashed #667eea;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-item-section {
+        flex-direction: column;
+    }
+
+    #itemName {
+        width: 100%;
+    }
+
+    .tier-label {
+        width: 60px;
+        font-size: 1.5em;
+    }
+
+    .item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .item img {
+        height: 55px;
+    }
+
+    .item .item-name {
+        font-size: 10px;
+    }
+}
+
